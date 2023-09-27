@@ -34,11 +34,19 @@ def sort_contact(data_file):
 def edit_contact(data_file):
     with open(data_file, 'r', encoding="UTF-8") as phone_base:
         data_for_edit = phone_base.read()
-        new_data = data_for_edit.replace(input("Старая данные "), input("Новые данные "))
+        new_data = data_for_edit.replace(input("Старые данные "), input("Новые данные "))
     with open(data_file, 'w', encoding="UTF-8") as phone_base:
-       phone_base.write(new_data)
+        phone_base.write(new_data)
 
-edit_contact("PhoneBase.txt")
+def dell_contact(data_file):
+    dell_data = input("Введите данные контакта для удаления ")
+    with open(data_file, 'r', encoding="UTF-8") as phone_base:
+        lines = phone_base.readlines()
+    with open(data_file, 'w', encoding="UTF-8") as phone_base:
+        for line in lines:
+            if dell_data not in line:
+                phone_base.write(line)
+
 
 
 
